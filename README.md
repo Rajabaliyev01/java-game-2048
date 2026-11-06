@@ -12,7 +12,7 @@
 
 ---
 
-*Java tilini 0 dan o'rganuvchilar uchun qiziqarli, zamonaviy va real natijali amaliyot sifatida **Antigravity AI** yordamida to'liq **OOP (Object-Oriented Programming)** tamoyillari asosida tayyorlangan 2048 o'yini.*
+*Java tilini 0 dan o'rganuvchilar uchun qiziqarli, zamonaviy va real natijali amaliyot sifatida **AI** yordamida to'liq **OOP (Object-Oriented Programming)** tamoyillari asosida tayyorlangan 2048 o'yini.*
 
 </div>
 
@@ -95,7 +95,7 @@ java -cp bin game2048.Main
 
 ## 🤖 AI Yordami
 
-> Ushbu loyiha **Antigravity AI** yordamida yangi boshlovchi dasturchiga Java imkoniyatlari, Swing grafikasi va OOP tamoyillarini ko'rgazmali va zavqli tarzda o'rgatish maqsadida yaratildi.
+> Ushbu loyiha **AI** yordamida yangi boshlovchi dasturchiga Java imkoniyatlari, Swing grafikasi va OOP tamoyillarini ko'rgazmali va zavqli tarzda o'rgatish maqsadida yaratildi.
 
 ---
 
