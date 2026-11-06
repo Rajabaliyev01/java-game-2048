@@ -6,13 +6,15 @@ import java.util.Random;
 
 /**
  * 4x4 o'yin doskasi (Board).
- * Kataklar holatini saqlash, siljitish va birlashtirish logikasi.
+ * Animatsiyalar uchun har bir qadamda yangi chiqqan katak koordinatasini ham saqlaydi.
  */
 public class Board {
     public static final int SIZE = 4;
     private final Tile[][] grid = new Tile[SIZE][SIZE];
     private final Random random = new Random();
     private int score = 0;
+    private int lastSpawnRow = -1;
+    private int lastSpawnCol = -1;
 
     public Board() {
         reset();
@@ -20,6 +22,8 @@ public class Board {
 
     public void reset() {
         score = 0;
+        lastSpawnRow = -1;
+        lastSpawnCol = -1;
         for (int r = 0; r < SIZE; r++) {
             for (int c = 0; c < SIZE; c++) {
                 grid[r][c] = new Tile(0);
@@ -37,7 +41,14 @@ public class Board {
         return score;
     }
 
-    // Bo'sh joylarga tasodifan 2 (90% ehtimol) yoki 4 (10%) chiqarish
+    public int getLastSpawnRow() {
+        return lastSpawnRow;
+    }
+
+    public int getLastSpawnCol() {
+        return lastSpawnCol;
+    }
+
     public boolean addRandomTile() {
         List<int[]> emptyCells = new ArrayList<>();
         for (int r = 0; r < SIZE; r++) {
@@ -52,13 +63,11 @@ public class Board {
         int[] cell = emptyCells.get(random.nextInt(emptyCells.size()));
         int val = (random.nextDouble() < 0.9) ? 2 : 4;
         grid[cell[0]][cell[1]] = new Tile(val);
+        lastSpawnRow = cell[0];
+        lastSpawnCol = cell[1];
         return true;
     }
 
-    /**
-     * Berilgan yo'nalish bo'yicha harakatlantirish.
-     * @return agar doskada biror o'zgarish ro'y bersa true qaytaradi.
-     */
     public boolean move(Direction direction) {
         boolean changed = false;
         switch (direction) {
@@ -98,7 +107,6 @@ public class Board {
         return changed;
     }
 
-    // 1D massivni siljitish va bir xil qo'shnilarni qo'shish (2048 ning markaziy algoritmi)
     private int[] slideAndMerge(int[] line) {
         List<Integer> nonZero = new ArrayList<>();
         for (int val : line) {
@@ -111,7 +119,7 @@ public class Board {
                 int combined = nonZero.get(i) * 2;
                 result.add(combined);
                 score += combined;
-                i++; // Birlashtirilgan ikkinchi elementni o'tkazib yuborish
+                i++;
             } else {
                 result.add(nonZero.get(i));
             }
@@ -166,7 +174,6 @@ public class Board {
         return rev;
     }
 
-    // 2048 ga erishilganmi?
     public boolean hasWon() {
         for (int r = 0; r < SIZE; r++) {
             for (int c = 0; c < SIZE; c++) {
@@ -176,15 +183,12 @@ public class Board {
         return false;
     }
 
-    // Harakat qilish uchun imkoniyat bormi?
     public boolean isGameOver() {
-        // Bo'sh joy bo'lsa o'yin tugamagan
         for (int r = 0; r < SIZE; r++) {
             for (int c = 0; c < SIZE; c++) {
                 if (grid[r][c].isEmpty()) return false;
             }
         }
-        // Yonma-yon bir xil kataklar bo'lsa hali birlashtirish mumkin
         for (int r = 0; r < SIZE; r++) {
             for (int c = 0; c < SIZE; c++) {
                 int val = grid[r][c].getValue();
