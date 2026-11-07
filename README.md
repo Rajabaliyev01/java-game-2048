@@ -18,6 +18,19 @@
 
 ---
 
+## 📸 Skrinshotlar / Screenshots
+
+### 1. 🎮 O'yin Boshlanishi — Cyber Blue Edition
+![2048 Start Screen](public/screenshots/Screenshot%202026-11-07%20at%2012.44.00.png)
+
+### 2. ⚡ O'yin Jarayoni — Neon Plitkalar (Ball: 2444)
+![2048 Gameplay](public/screenshots/Screenshot%202026-11-07%20at%2012.44.38.png)
+
+### 3. 🏁 O'yin Yakunlandi — Game Over Overlay (Ball: 3256)
+![2048 Game Over](public/screenshots/Screenshot%202026-11-07%20at%2012.44.56.png)
+
+---
+
 ## ✨ Zamonaviy Dizayn va Imkoniyatlar
 
 | Xususiyat | Tavsif |
